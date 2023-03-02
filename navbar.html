@@ -15,18 +15,89 @@
   </head>
   <body>
     <nav>
-      <div class="">
-        <h1>LOGO</h1>
-        <ul>
-          <li>HOME</li>
-        </ul>
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between py-3">
+          <h1 class="m-0">LOGO</h1>
+          <ul class="list-unstyled d-lg-flex align-items-center mb-0 d-none">
+            <li class="px-3">HOME</li>
+            <li class="px-3">HOME</li>
+            <li class="px-3">HOME</li>
+            <li class="px-3">HOME</li>
+            <li class="px-3"><button>Contact</button></li>
+          </ul>
+          <div
+            class="overlay position-fixed d-flex flex-column justify-content-center align-items-center w-100"
+            id="overlay"
+          >
+            <ul class="list-unstyled mb-0">
+              <li class="px-3" onclick="removeOverlay()">
+                <a href="#section1">HOME</a>
+              </li>
+              <li class="px-3" onclick="removeOverlay()">
+                <a href="#section2">HOME</a>
+              </li>
+              <li class="px-3" onclick="removeOverlay()">
+                <a href="#section3">HOME</a>
+              </li>
+              <li class="px-3" onclick="removeOverlay()">
+                <a href="#section4">HOME</a>
+              </li>
+              <li class="px-3" onclick="removeOverlay()">
+                <button>Contact</button>
+              </li>
+            </ul>
+            <button class="cross_btn" onclick="removeOverlay()">
+              Cross Btn
+            </button>
+          </div>
+          <div class="d-lg-none" id="toggle_btn">Toggle btn</div>
+        </div>
       </div>
     </nav>
+
+    <div
+      id="section1"
+      class="vh-100 d-flex flex-column justify-content-center align-items-center bg-primary"
+    >
+      <h1>SECTION 1</h1>
+    </div>
+    <div
+      id="section2"
+      class="vh-100 d-flex text-white flex-column justify-content-center align-items-center bg-dark"
+    >
+      <h1>SECTION 2</h1>
+    </div>
+    <div
+      id="section3"
+      class="vh-100 d-flex flex-column justify-content-center align-items-center bg-primary"
+    >
+      <h1>SECTION 3</h1>
+    </div>
+    <div
+      id="section4"
+      class="vh-100 d-flex flex-column justify-content-center align-items-center bg-succedd"
+    >
+      <h1>SECTION 4</h1>
+    </div>
+
     <script src="./main.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const toggle = document.getElementById("toggle_btn");
+      const overlay = document.getElementById("overlay");
+      const remove_overlay = document.querySelectorAll(".remove_overlay");
+      console.log(remove_overlay, "remove_overlay");
+      toggle.addEventListener("click", function () {
+        console.log("zxcvbnhm,");
+        overlay.classList.toggle("active_overlay");
+      });
+      function removeOverlay() {
+        overlay.classList.remove("active_overlay");
+      }
+    </script>
   </body>
 </html>
