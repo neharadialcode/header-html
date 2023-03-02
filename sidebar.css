@@ -1,0 +1,39 @@
+body {
+  scroll-behavior: smooth;
+}
+.sidebar {
+  width: 300px;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.toggle_btn {
+  background-color: red;
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.active_sidebar_btn {
+  left: 100px;
+}
+.active_sidebar {
+  width: 200px !important;
+  position: fixed;
+  top: 0;
+}
+.smooth_scroll {
+  scroll-behavior: smooth;
+}
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 0;
+    position: absolute;
+  }
+}
