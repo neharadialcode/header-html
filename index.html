@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    video {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <video muted autoplay loop playsinline>
+      <source src="./production ID_4434272.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <video id="my-video" muted autoplay loop playsinline>
+      <source src="./production ID_4434272.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <script>
+      const myVideo = document.getElementById("my-video");
+      myVideo.addEventListener("touchstart", function () {
+        myVideo.muted = false;
+      });
+    </script>
+  </body>
+</html>
