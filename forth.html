@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .accordion {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      margin-bottom: 20px;
+    }
+
+    .accordion-header {
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px;
+      background-color: #eee;
+      border-radius: 5px;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .accordion-header.active {
+      background-color: #ddd;
+    }
+
+    .accordion-content {
+      padding: 10px;
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-in-out;
+    }
+
+    .accordion-content.active {
+      max-height: 500px;
+    }
+  </style>
+  <body>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">Accordion Item 1</h2>
+        <div class="accordion-content">Content for Accordion Item 1</div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">Accordion Item 2</h2>
+        <div class="accordion-content">Content for Accordion Item 2</div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">Accordion Item 3</h2>
+        <div class="accordion-content">Content for Accordion Item 3</div>
+      </div>
+    </div>
+    <script>
+      var accordions = document.querySelectorAll(".accordion-item");
+      var index = 0;
+      var intervalDuration = 2000;
+
+      function toggleAccordion() {
+        accordions[index]
+          .querySelector(".accordion-header")
+          .classList.toggle("active");
+        accordions[index]
+          .querySelector(".accordion-content")
+          .classList.toggle("active");
+
+        if (index === accordions.length - 1) {
+          index = 0;
+        } else {
+          index++;
+        }
+      }
+
+      setInterval(toggleAccordion, intervalDuration);
+    </script>
+  </body>
+</html>
