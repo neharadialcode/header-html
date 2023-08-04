@@ -48,44 +48,45 @@
     .height {
       height: 100vh;
     }
+    #img_tag {
+      transition: all 0.3s ease-in;
+    }
   </style>
   <body>
-    <div class="accordion">
-      <div class="accordion-item" id="first_accordion">
-        <div class="accordion-header">Accordion 1</div>
-        <div class="accordion-content">
-          est a nunc. Proin euismod viverra aliquam. Sed molestie, nulla et
-          malesuada commodo, sapien tellus blandit est, id interdum felis augue
-          vel ante.
+    <div class="d-flex">
+      <div class="accordion">
+        <div class="accordion-item" id="first_accordion">
+          <div class="accordion-header">Accordion 1</div>
+          <div class="accordion-content">
+            est a nunc. Proin euismod viverra aliquam. Sed molestie, nulla et
+            malesuada commodo, sapien tellus blandit est, id interdum felis
+            augue vel ante.
+          </div>
+        </div>
+        <div class="accordion-item" id="second_accordion">
+          <div class="accordion-header">Accordion 2</div>
+          <div class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            elementum velit elit, a porttitor elit faucibus id. Nullam congue
+          </div>
+        </div>
+        <div class="accordion-item" id="thirdsecordion">
+          <div class="accordion-header">Accordion 3</div>
+          <div class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            elementum velit elit, a porttitor elit faucibus id. Nullam congue
+          </div>
+        </div>
+        <div class="accordion-item" id="fourth_accordion">
+          <div class="accordion-header">Accordion 4</div>
+          <div class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            elementum velit elit, a porttitor elit faucibus id. Nullam congue
+          </div>
         </div>
       </div>
-      <div class="accordion-item" id="second_accordion">
-        <div class="accordion-header">Accordion 2</div>
-        <div class="accordion-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-          elementum velit elit, a porttitor elit faucibus id. Nullam congue
-        </div>
-      </div>
-      <div class="accordion-item" id="second_accordion">
-        <div class="accordion-header">Accordion 2</div>
-        <div class="accordion-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-          elementum velit elit, a porttitor elit faucibus id. Nullam congue
-        </div>
-      </div>
-      <div class="accordion-item" id="second_accordion">
-        <div class="accordion-header">Accordion 2</div>
-        <div class="accordion-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-          elementum velit elit, a porttitor elit faucibus id. Nullam congue
-        </div>
-      </div>
-      <div class="accordion-item" id="second_accordion">
-        <div class="accordion-header">Accordion 2</div>
-        <div class="accordion-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-          elementum velit elit, a porttitor elit faucibus id. Nullam congue
-        </div>
+      <div>
+        <img id="img_tag" src="/img-1.svg" alt="img-1.svg" />
       </div>
     </div>
     <div class="height"></div>
@@ -97,20 +98,67 @@
     ></script>
     <script>
       const accordions = document.querySelectorAll(".accordion-item");
+      const imageTag = document.getElementById("img_tag");
+      const allimageslist = [
+        {
+          imageUrl: "./img-1.svg",
+        },
+        {
+          imageUrl: "./img2.svg",
+        },
+        {
+          imageUrl: "./img-1.svg",
+        },
+        {
+          imageUrl: "./img2.svg",
+        },
+      ];
+      // window.addEventListener("scroll", function () {
+      //   if (window.pageYOffset > 1) {
+      //     let currentAccordionIndex = 0;
+      //     accordions[currentAccordionIndex].classList.add("active");
+      //     function rotateAccordion() {
+      //       accordions[currentAccordionIndex].classList.remove("active");
+      //       currentAccordionIndex =
+      //         (currentAccordionIndex + 1) % accordions.length;
+      //       accordions[currentAccordionIndex].classList.add("active");
 
-      window.addEventListener("scroll", function () {
-        if (window.pageYOffset > 500) {
-          let currentAccordionIndex = 0;
-          accordions[currentAccordionIndex].classList.add("active");
-          function rotateAccordion() {
-            accordions[currentAccordionIndex].classList.remove("active");
-            currentAccordionIndex =
-              (currentAccordionIndex + 1) % accordions.length;
-            accordions[currentAccordionIndex].classList.add("active");
-            setTimeout(rotateAccordion, 5000);
+      //       console.log(allimageslist[currentAccordionIndex]);
+      //       imageTag.src = allimageslist[currentAccordionIndex].imageUrl;
+      //       setTimeout(rotateAccordion, 5000);
+      //     }
+      //     setTimeout(rotateAccordion, 5000);
+      //     console.log(imageTag, "imageTag");
+      //   }
+      // });
+
+      let currentAccordionIndex = 0;
+
+      function rotateAccordion(targetIndex) {
+        accordions[currentAccordionIndex].classList.remove("active");
+        accordions[targetIndex].classList.add("active");
+        currentAccordionIndex = targetIndex;
+
+        console.log(allimageslist[currentAccordionIndex]);
+        imageTag.src = allimageslist[currentAccordionIndex].imageUrl;
+      }
+
+      function setAccordionRotation() {
+        setTimeout(() => {
+          const targetIndex = (currentAccordionIndex + 1) % accordions.length;
+          rotateAccordion(targetIndex);
+          setAccordionRotation();
+        }, 5000);
+      }
+
+      setAccordionRotation();
+
+      accordions.forEach((accordion, index) => {
+        accordion.addEventListener("click", () => {
+          if (!accordion.classList.contains("active")) {
+            rotateAccordion(index);
           }
-          setTimeout(rotateAccordion, 5000);
-        }
+        });
       });
     </script>
   </body>

@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
   </head>
   <style>
@@ -12,15 +18,80 @@
     }
   </style>
   <body>
-    <video muted autoplay loop playsinline>
-      <source src="./production ID_4434272.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <video id="my-video" muted autoplay loop playsinline>
-      <source src="./production ID_4434272.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <video muted autoplay loop playsinline>
+            <source src="./production ID_4434272.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-4">
+          <video id="my-video" muted autoplay loop playsinline>
+            <source src="./production ID_4434272.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-4">
+          <video width="600" height="409" id="videoPlayer" controls="controls">
+            <!-- MP4 Video -->
+            <source src="./production ID_4434272.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="videoCoverImage">
+            <div
+              onclick="thevid=document.getElementById('thevideo'); thevid.style.display='block'; this.style.display='none'"
+            >
+              <img
+                class="thumb"
+                style="cursor: pointer"
+                src="https://via.placeholder.com/560x315.png"
+              />
+            </div>
+            <div id="thevideo" style="display: none">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/oNPTWlU4u4g?rel=0;&autoplay=1&mute=1&loop=1"
+                frameborder="0"
+                allowfullscreen=""
+                include=""
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var videoPlayer = document.getElementById("videoPlayer");
+
+      // Auto play, half volume.
+      videoPlayer.play();
+      videoPlayer.volume = 0.5;
+
+      // Play / pause.
+      videoPlayer.addEventListener("click", function () {
+        if (videoPlayer.paused == false) {
+          videoPlayer.pause();
+          videoPlayer.firstChild.nodeValue = "Play";
+        } else {
+          videoPlayer.play();
+          videoPlayer.firstChild.nodeValue = "Pause";
+        }
+      });
+    </script>
     <script>
       const myVideo = document.getElementById("my-video");
       myVideo.addEventListener("touchstart", function () {

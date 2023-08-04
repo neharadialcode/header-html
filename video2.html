@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Playback</title>
+    <style>
+      #playButton {
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      .hide-button {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="playButton" style="display: block">Play</button>
+    <video id="videoPlayer" src="./production ID_4434272.mp4"></video>
+
+    <script>
+      const playButton = document.getElementById("playButton");
+      const videoPlayer = document.getElementById("videoPlayer");
+      let isVideoEnded = false;
+
+      playButton.addEventListener("click", function () {
+        if (videoPlayer.paused) {
+          videoPlayer.play();
+          playButton.textContent = "Pause";
+        } else {
+          videoPlayer.pause();
+          playButton.textContent = "Play";
+        }
+      });
+
+      videoPlayer.addEventListener("ended", function () {
+        isVideoEnded = true;
+        playButton.style.display = "block";
+      });
+
+      videoPlayer.addEventListener("play", function () {
+        if (isVideoEnded) {
+          isVideoEnded = false;
+          playButton.classList.add("hide-button");
+        }
+      });
+    </script>
+  </body>
+</html>

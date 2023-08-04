@@ -44,7 +44,10 @@
     }
   </style>
   <body>
-    <div class="accordion">
+    <button onclick="typeWriter()">Click me</button>
+
+    <p id="demo"></p>
+    <!-- <div class="accordion">
       <div class="accordion-item">
         <h2 class="accordion-header">Accordion Item 1</h2>
         <div class="accordion-content">Content for Accordion Item 1</div>
@@ -57,8 +60,50 @@
         <h2 class="accordion-header">Accordion Item 3</h2>
         <div class="accordion-content">Content for Accordion Item 3</div>
       </div>
-    </div>
+    </div> -->
     <script>
+      var i = 0;
+      var txt = `const axios = require(‘axios’);
+
+(asyn function () {
+
+    try {
+
+           let  apiUrl = ‘https://api.realestateapi.com/v2/PropertyDetail’;
+
+           let  headers = { 
+
+                 ‘content-type’: ‘application/json’,
+
+                 ‘x-api-key’: ‘<YOUR API KEY>’ 
+                 }
+
+                 let  query = { 
+
+                 address: ‘17 Topeka Pass, Willingboro NJ 08046’
+
+                 }
+
+           let  {data;} = await axios .post(apiUrl, query, { headers });
+
+           return data; 
+
+     } catch (error) { console.error (error.message);}
+
+})();
+
+
+`; /* The text */
+      var speed = 100; /* The speed/duration of the effect in milliseconds */
+
+      function typeWriter() {
+        if (i < txt.length) {
+          document.getElementById("demo").innerHTML += txt.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
       var accordions = document.querySelectorAll(".accordion-item");
       var index = 0;
       var intervalDuration = 2000;

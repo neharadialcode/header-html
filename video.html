@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Playback</title>
+  </head>
+  <body>
+    <button id="playButton">Play</button>
+    <video id="videoPlayer" src="./production ID_4434272.mp4"></video>
+
+    <script>
+      const playButton = document.getElementById("playButton");
+      const videoPlayer = document.getElementById("videoPlayer");
+
+      playButton.addEventListener("click", function () {
+        if (videoPlayer.paused) {
+          videoPlayer.play();
+          playButton.textContent = "Pause";
+        } else {
+          videoPlayer.pause();
+          playButton.textContent = "Play";
+        }
+      });
+    </script>
+  </body>
+</html>
