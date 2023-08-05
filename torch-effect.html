@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+      }
+      .image {
+        width: 600px;
+        height: 400px;
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+          url("https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg");
+        background-repeat: no-repeat;
+      }
+      .torch {
+        width: 600px;
+        height: 400px;
+        background: url("https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg");
+        background-repeat: no-repeat;
+        clip-path: circle(80px at 0px 0px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image" onmousemove="moveTorch(event)">
+      <div class="torch"></div>
+    </div>
+    <script>
+      function moveTorch(event) {
+        var torch = document.getElementsByClassName("torch")[0];
+        torch.style.clipPath = `circle(80px at ${event.offsetX}px ${event.offsetY}px
+        )`;
+      }
+    </script>
+  </body>
+</html>
