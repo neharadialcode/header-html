@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scroll demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./assets/css/style.css" /> -->
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      body {
+        background-image: url("https://uploads-ssl.webflow.com/64ae4e914ce11632fc47a50a/64d099d1fee05851849cee6c_ASSETS%207%201.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+        color: white;
+      }
+      header {
+        color: white;
+        position: relative;
+        min-height: 200vh;
+      }
+      .pageLogo {
+        position: sticky;
+        width: 100%;
+        top: 50vh;
+        height: auto;
+      }
+
+      .semiCircle {
+        width: 100%;
+        height: 100%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        background: url("https://uploads-ssl.webflow.com/64ae4e914ce11632fc47a50a/64d095b822c65f136738a375_ASSETS%206%202.png");
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: auto;
+        position: absolute;
+        top: 0;
+        clip-path: circle(0 at 50% 0);
+        z-index: -1;
+      }
+      .main_component {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <lottie-player
+        id="logo_img"
+        class="pageLogo"
+        src="./logo2.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay
+      ></lottie-player>
+    </header>
+    <main
+      id="main_component"
+      class="min-vh-100 position-relative"
+      style="background-color: rgba(0, 128, 0, 0.397)"
+    >
+      <div class="semiCircle"></div>
+      <div class="min-vh-100"></div>
+      <div class="min-vh-100"></div>
+      <div class="min-vh-100"></div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <script>
+      const circle = document.querySelector(".semiCircle");
+      function increaseCircleSizeOnScroll() {
+        if (
+          document.body.scrollTop > 150 ||
+          document.documentElement.scrollTop > 150
+        ) {
+          const scrollY = window.scrollY;
+          const newSize = scrollY * 0.1;
+          // circle.style.clipPath = `circle(${newSize}% at center)`;
+          circle.style.clipPath = `circle(${newSize}% at 50% 0)`;
+        } else {
+          circle.style.clipPath = `circle(0% at 50% 0)`;
+        }
+      }
+      window.addEventListener("scroll", increaseCircleSizeOnScroll);
+    </script>
+  </body>
+</html>

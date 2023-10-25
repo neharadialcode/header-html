@@ -1,66 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tippy.js@6/animations/scale.css"
-    />
-    <style>
-      .tippy-box[data-theme~="tomato"] > .tippy-arrow::before {
-        border-width: 8px;
-        top: 100%;
-      }
 
-      .tippy-box[data-theme~="tomato"] {
-        background-color: #f6f6ff;
-        color: black;
-        width: 200px;
-        padding: 17px;
-        font-size: 14px;
-        text-align: center;
-        border-radius: 5px;
-        line-height: 19px;
-        border-right: 2px solid #e3e4ff;
-        border-left: 2px solid #e3e4ff;
-        border-bottom: 2px solid #e3e4ff;
-        box-shadow: 0px -1px 0px #e3e4ff;
-        margin-top: 10px; /* Adjust this value as needed to position the tooltip below the button */
-        /* Dynamic arrow border positioning based on data-placement *
-        position: relative;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+</head>
 
-      .tippy-box {
-        filter: drop-shadow(0px -1px 0px #e3e4ff);
-      }
 
-      .parent {
-        height: 100vh;
-        display: flex;
-        /* align-items: end; */
-      }
-    </style>
-  </head>
-  <body>
-    <div class="parent">
-      <div class="shadow">
-        <button data-tippy-content="thwhiewnjijew">Tippy</button>
-      </div>
-    </div>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        tippy("button", {
-          arrow: true,
-          placement: "bottom",
-          size: "small",
-          theme: "tomato",
-        });
-      });
-    </script>
-  </body>
+
+<body>
+  <button>Default</button>
+  <button data-tippy-content="hello">I have my own content</button>
+  <button data-tippy-arrow="true">I have my own option</button>
+
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+  <script>
+    // Global config for all <button>s
+    tippy('button', {
+      content: 'Global content',
+      trigger: 'click',
+      duration: 0,
+      arrow: true,
+      interactiveBorder: 30,
+      role: 'tooltip',
+      interactive: true,
+      appendTo: 'parent',
+
+
+    });
+    tippy('button', {
+      content: 'Global content',
+      trigger: 'click',
+      duration: 0,
+      arrow: true,
+      interactiveBorder: 30,
+      role: 'tooltip',
+      interactive: true,
+      appendTo: 'child',
+
+
+    });
+  </script>
+</body>
+
 </html>

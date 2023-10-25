@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+</head>
+
+<style>
+  .wrapper_slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: scroll;
+    width: auto;
+    scroll-behavior: unset !important;
+    background-color: pink;
+  }
+
+  .wrapper_slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wrapper_slider .custom_min_width {
+    min-width: 370px;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    margin: 20px;
+  }
+</style>
+
+<body>
+  <div class="wrapper_slider mt_top_100 z_1">
+    <div class="py-5 custom_min_width ">
+      <h1>
+        1
+      </h1>
+    </div>
+    <div class="py-5 custom_min_width">
+      <h1>2</h1>
+    </div>
+    <div class="py-5 custom_min_width ">
+      <h1>
+        3
+      </h1>
+    </div>
+    <div class="py-5 custom_min_width">
+      <h1>
+        4
+      </h1>
+    </div>
+    <div class="py-5 custom_min_width ">
+      <h1>5</h1>
+    </div>
+  </div>
+
+
+  <!-- Initialize Swiper -->
+  <script>
+    const wrapper = document.querySelector(".wrapper_slider");
+    const state = {
+      animationFrame: window.requestAnimationFrame(animateSlider),
+      elements: wrapper.children,
+      indexToAdd: 0
+    };
+
+    function animateSlider() {
+      if (
+        Math.round(wrapper.scrollWidth - wrapper.scrollLeft) <=
+        Math.round(wrapper.getBoundingClientRect().width)
+      ) {
+        wrapper.append(state.elements[state.indexToAdd].cloneNode(true));
+        if (state.indexToAdd <= state.elements.length - 1) {
+          state.indexToAdd += 1;
+        } else {
+          state.indexToAdd = 0;
+        }
+      }
+
+      wrapper.scrollLeft += 1;
+      state.animationFrame = requestAnimationFrame(animateSlider);
+    }
+
+    state.animationFrame = window.requestAnimationFrame(animateSlider);
+
+    wrapper.addEventListener("mouseover", () =>
+      cancelAnimationFrame(state.animationFrame)
+    );
+
+    wrapper.addEventListener("mouseleave", () =>
+      (state.animationFrame = window.requestAnimationFrame(animateSlider))
+    );
+  </script>
+</body>
+
+
+
+</html>
